@@ -1,7 +1,6 @@
 from flask import Flask
-from flask_migrate import Migrate
-from .auth.blueprints import Blueprints
-from .extensions import db
+from app.blueprints import Blueprints
+from .extensions import db, migrate, marshmallow
 
 
 def init_app():
@@ -9,8 +8,9 @@ def init_app():
     app.config.from_object("settings.Config")
 
     with app.app_context():
-        #  extensions
+        #  initialize extensions
         db.init_app(app)
-        Migrate(app, db)
+        migrate.init_app(app, db)
+        marshmallow.init_app(app)
         Blueprints.register(app)
         return app
