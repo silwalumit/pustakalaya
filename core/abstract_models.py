@@ -11,12 +11,11 @@ class AbstractTimeStampModel(db.Model):
     updated_date = db.Column(db.DateTime())
 
 
-class BaseModel(AbstractTimeStampModel):
+class Model(AbstractTimeStampModel):
     __abstract__ = True
 
-    @classmethod
-    def save(cls, commit=True):
-        db.session.add()
+    def save(self, commit=True):
+        db.session.add(self)
         if commit:
             db.session.commit()
 
