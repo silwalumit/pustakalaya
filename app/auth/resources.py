@@ -3,10 +3,8 @@ from flask_restful import Resource
 from marshmallow import ValidationError
 from werkzeug.security import generate_password_hash
 
-from app.auth.models import User
 from app.auth.serializers import UserRegisterSerializer
 from core.exceptions import ValidationException
-from core.logger import logger
 
 
 class LoginView(Resource):

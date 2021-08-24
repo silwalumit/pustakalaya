@@ -5,5 +5,5 @@ from app.auth.resources import LoginView, RegisterView
 auth_bp = Blueprint('auth', __name__)
 api = Api(auth_bp)
 
-api.add_resource(LoginView,'/login')
+api.add_resource(LoginView, '/login')
 api.add_resource(RegisterView, '/register')
